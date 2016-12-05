@@ -1,0 +1,30 @@
+version: '2'
+services:
+  php:
+    build: container/wp
+    container_name: cinra_wp
+    volumes:
+      - ./container/wp/html/assets:/var/www/html/assets
+    ports:
+      - 80:80
+    links:
+      - mysql
+    environment:
+      DOMAIN: cinra.dev
+      APACHE_DOCROOT: /var/www/html
+      APACHE_LOG_DIR: /var/log/apache2
+      PROJECT_NAME: cinra
+      WP_DB_HOST: mysql:3306
+      WP_DB_NAME: cinra
+      WP_DB_USER: cinra
+      WP_DB_PASSWORD: 3030
+  mysql:
+    image: mysql:5.7.16
+    container_name: cinra_mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 3030
+      MYSQL_DATABASE: cinra
+      MYSQL_USER: cinra
+      MYSQL_PASSWORD: 3030

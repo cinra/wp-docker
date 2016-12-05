@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: the Postman\n"
+"POT-Creation-Date: 2014-03-11 22:45+0900\n"
+"PO-Revision-Date: 2014-03-11 22:45+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __ngettext:1,2;__;_e;_c\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/menus.php:21 admin/menus.php:22 admin/menus.php:107
+msgid "the Postman"
+msgstr "ポストマン"
+
+#: admin/menus.php:31
+msgid "Form Elements"
+msgstr "フォーム要素"
+
+#: admin/menus.php:32
+msgid "Manage Form Elements"
+msgstr "フォーム編集"
+
+#: admin/menus.php:42 admin/menus.php:206
+msgid "Mail Templates"
+msgstr "メールテンプレート"
+
+#: admin/menus.php:43
+msgid "Manage Mail Templates"
+msgstr "メールテンプレートの管理"
+
+#: admin/menus.php:128
+msgid "Label"
+msgstr "項目名"
+
+#: admin/menus.php:132
+msgid "Name"
+msgstr "インプット名"
+
+#: admin/menus.php:136
+msgid "Rules"
+msgstr "バリデーションルール"
+
+#: admin/menus.php:142 admin/menus.php:251
+msgid "Delete It"
+msgstr "削除する"
+
+#: admin/menus.php:154 admin/menus.php:263
+msgid "Add New"
+msgstr "新規追加"
+
+#: admin/menus.php:161 admin/menus.php:270
+msgid "Save"
+msgstr "変更を保存"
+
+#: admin/menus.php:229
+msgid "Type"
+msgstr "テンプレートタイプ"
+
+#: admin/menus.php:233
+msgid "Subject"
+msgstr ""
+
+#: admin/menus.php:237
+msgid "From"
+msgstr "From"
+
+#: admin/menus.php:241
+msgid "To"
+msgstr "To"
+
+#: admin/menus.php:245
+msgid "Template"
+msgstr "テンプレート"
+
+#: rules/required.php:29
+msgid "Required"
+msgstr "必須項目"
+
+#: rules/required.php:30 tests/the-postman.test.php:44
+msgid "This field is required!"
+msgstr "この項目は必須項目です。"
+
+#~ msgid "Match Value"
+#~ msgstr "項目がマッチするか"
+
+#~ msgid "この項目は%sである必要があります"
+#~ msgstr "この項目は%sである必要があります"
+
+#~ msgid "Edit Contact Form"
+#~ msgstr "コンタクトフォームを編集する"
+
+#~ msgid "Contact Forms"
+#~ msgstr "コンタクトフォーム"
+
+#~ msgid "Add New Contact Form"
+#~ msgstr "コンタクトフォームを追加する"

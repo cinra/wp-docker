@@ -1,0 +1,15 @@
+<phpunit
+  bootstrap="../../../wp/wp-load.php"
+  backupGlobals="false"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  stopOnFailure="false"
+  >
+  <testsuites>
+    <testsuite name="Postman Test Suite">
+      <directory suffix=".php">./tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
