@@ -20,7 +20,7 @@ $ eval $(docker-machine env)
 
 **解説**
 
-**docker-machine start (default)**: Docker Machine（≒ VMインスタンス）を立ち上げる
+**docker-machine start default**: Docker Machine（≒ VMインスタンス）を立ち上げる
 
 **eval $(docker-machine env)**: 使用するDocker Machineを指定する
 
@@ -84,6 +84,18 @@ services:
       MYSQL_PASSWORD: 3030
 ```
 
+この設定で**「Docker Machineに、cinra_php、cinra_mysqlというコンテナを一つずつ立ち上げる。cinra_phpの方はポート80を公開、MySQLを使う。cinra_mysqlは公式のmysql5.7.6のイメージを使って構築、ポート3306で接続できる」**という指定を行っている
+
+- **version**: Docker Composeの書式バージョン。今んとこ無視してOK
+- **services**: こいつが肝。コンテナの指定。`services/php`とすると、「Docker Machineの中に、`php`っつうコンテナを作るよ」という意味なんだけど、この`php`は、コンテナ名とは違うのでややこしい。
+- **build**: Docker ImageをビルドするためのDockerfileの場所。この指定の代わりに`image`を使うことも出来る
+- **image**: （mysqlの方参照）ビルドすっ飛ばして、既存のDocker Imageを利用するときは、`build`ではなく、こちらを指定する。基本的に、Docker HubからImageを引っ張ってくる形になる https://hub.docker.com
+- **container_name**: コンテナ名。`docker ps -a`で見れる
+- **volumes**: Volumeを指定する。Volumeについては後述
+- **ports**: 公開するポートをポートフォワーディングで指定する
+- **links**: `services`で設定しているコンテナの中から、リンクするコンテナを指定する
+- **environment**: 環境変数。Dockerのお作法として、設定ファイルを環境毎に生成するのではなく、設定ファイル内から環境変数を利用するようなやり方をする。nginxとかは、設定ファイル内で環境変数を参照できないのでちょっと大変
+
 ### container/wp/Dockerfile
 
 ```
@@ -94,3 +106,13 @@ WORKDIR /var/www/html
 COPY ./html /var/www/html
 COPY ./template/wp-config-sample.php /var/www/html/wp/wp-config.php
 ```
+
+この設定で**「cinraのphp56というイメージをベースにDocker Imageを構築する。ディレクトリ`/var/www/html`に移動して、仮想マシンに、`html`フォルダと、`wp-config-sample.php`ファイルをコピー。`wp-config-sample.php`は`wp-config.php`にリネーム」**という指示を行っている。
+
+- **FROM**: ベースにするDocker Image。docker-compose.ymlで指定したのと同様、基本、Docker Hubにあるものが使われる
+- **WORKDIR**: 作業ディレクトリの指定
+- **COPY**: ホストマシンから、仮想マシンにファイルを複製する機能。同様の機能に**ADD**があるが、こちらはzipファイルの解凍なども行う
+
+### Volume
+
+ボリュームとは、仮想マシン上で使えるホストマシンの領域の事を指す。常に同期している「共有フォルダ」のようなものと捉えてよし。
