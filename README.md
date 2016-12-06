@@ -124,7 +124,7 @@ COPY ./template/wp-config-sample.php /var/www/html/wp/wp-config.php
 - **FROM**: ベースにするDocker Image。docker-compose.ymlで指定したのと同様、基本、Docker Hubにあるものが使われる
 - **WORKDIR**: 作業ディレクトリの指定
 - **COPY**: ホストマシンから、仮想マシンにファイルを複製する機能。同様の機能に**ADD**があるが、こちらはzipファイルの解凍なども行う
-- **RUN**: コマンドを実行する
+- **RUN**: コマンドを実行する（今回は使ってない）
 
 ### Volume
 
