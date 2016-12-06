@@ -84,7 +84,13 @@ services:
       MYSQL_PASSWORD: 3030
 ```
 
-この設定で**「Docker Machineに、cinra_php、cinra_mysqlというコンテナを一つずつ立ち上げる。cinra_phpの方はポート80を公開、MySQLを使う。cinra_mysqlは公式のmysql5.7.6のイメージを使って構築、ポート3306で接続できる」**という指定を行っている
+この設定ファイルで
+
+- **Docker Machineに、cinra_php、cinra_mysqlというコンテナを一つずつ立ち上げる**
+- **cinra_phpの方はポート80を公開、MySQLを使う**
+- **cinra_mysqlは公式のmysql5.7.6のイメージを使って構築、3306のポートで接続できる**
+
+という指定を行っている
 
 - **version**: Docker Composeの書式バージョン。今んとこ無視してOK
 - **services**: こいつが肝。コンテナの指定。`services/php`とすると、「Docker Machineの中に、`php`っつうコンテナを作るよ」という意味なんだけど、この`php`は、コンテナ名とは違うのでややこしい。
@@ -107,7 +113,13 @@ COPY ./html /var/www/html
 COPY ./template/wp-config-sample.php /var/www/html/wp/wp-config.php
 ```
 
-この設定で**「cinraのphp56というイメージをベースにDocker Imageを構築する。ディレクトリ`/var/www/html`に移動して、仮想マシンに、`html`フォルダと、`wp-config-sample.php`ファイルをコピー。`wp-config-sample.php`は`wp-config.php`にリネーム」**という指示を行っている。
+この設定ファイルで
+
+- **cinraのphp56というイメージをベースにDocker Imageを構築する**
+- **ディレクトリ`/var/www/html`に移動して、仮想マシンに、`html`フォルダと、`wp-config-sample.php`ファイルをコピー**
+- **`wp-config-sample.php`は`wp-config.php`にリネーム**
+
+という指示を行っている。
 
 - **FROM**: ベースにするDocker Image。docker-compose.ymlで指定したのと同様、基本、Docker Hubにあるものが使われる
 - **WORKDIR**: 作業ディレクトリの指定
