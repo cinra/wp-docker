@@ -116,7 +116,7 @@ COPY ./template/wp-config-sample.php /var/www/html/wp/wp-config.php
 この設定ファイルで
 
 - **cinraのphp56というイメージをベースにDocker Imageを構築する**
-- **ディレクトリ`/var/www/html`に移動して、仮想マシンに、`html`フォルダと、`wp-config-sample.php`ファイルをコピー**
+- **ディレクトリ`/var/www/html`に移動して、仮想マシンに`html`フォルダと、`wp-config-sample.php`ファイルをコピー**
 - **`wp-config-sample.php`は`wp-config.php`にリネーム**
 
 という指示を行っている。
@@ -124,7 +124,25 @@ COPY ./template/wp-config-sample.php /var/www/html/wp/wp-config.php
 - **FROM**: ベースにするDocker Image。docker-compose.ymlで指定したのと同様、基本、Docker Hubにあるものが使われる
 - **WORKDIR**: 作業ディレクトリの指定
 - **COPY**: ホストマシンから、仮想マシンにファイルを複製する機能。同様の機能に**ADD**があるが、こちらはzipファイルの解凍なども行う
+- **RUN**: コマンドを実行する
 
 ### Volume
 
 ボリュームとは、仮想マシン上で使えるホストマシンの領域の事を指す。常に同期している「共有フォルダ」のようなものと捉えてよし。
+
+ビルドの際には、
+
+1. **COPY**や**ADD**など、「ホストマシンから仮想マシンにファイルを転送する処理」
+1. **RUN**などで仮想マシンにファイルを直接インストールする処理
+1. Volumeとして、仮想マシンとホストマシンの指定領域が同期
+
+という順序で処理するので、「`npm install`走らせたいんだけど、`package.json`が存在しない（`RUN npm install`の前に、`COPY package.json`するのが正しい）」「`npm install`したのに、`node_modules`が消えてる（多分、ボリューム張った時に消えてる。`node_modules`関係ないところでボリュームを張るか、`node_modules`ごとボリューム化する）」などのトラブルが発生する。
+
+### Data Volume
+
+他のコンテナの指定領域をボリュームとして扱う方法。[前回のDocker会](https://github.com/itaoyuta/boozer)に詳しい
+
+### リモートサーバーにDocker Machineを立ち上げる
+
+- リモートサーバーにDocker Machineを立ち上げることが可能
+- Driverを使えるようなサーバーだと、仮想／ホストを意識することなく、スムーズに移行可能なので、超気持ちいい
