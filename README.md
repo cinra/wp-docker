@@ -5,6 +5,12 @@
 1. Docker入れておいて！（`docker-machine`っていうコマンドが認識されていれば大丈夫） https://www.docker.com/products/docker-toolbox
 1. `/etc/hosts`に`192.168.99.100 cinra.dev`を加えておいて！（ブラウザで`http://cinra.dev`にアクセスできるようになります）
 
+**/etc/hosts**
+
+```sh
+192.168.99.100 cinra.dev
+```
+
 ※ https://github.com/itaoyuta/boozer
 
 ## 手順
@@ -51,7 +57,7 @@ $ docker-compose up -d
 
 ### docker-compose.yml
 
-```yml
+```yaml
 version: '2'
 services:
   php:
@@ -104,7 +110,7 @@ services:
 
 ### container/wp/Dockerfile
 
-```
+```docker
 FROM cinra/php56
 
 WORKDIR /var/www/html

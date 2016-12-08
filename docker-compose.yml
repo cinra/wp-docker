@@ -21,6 +21,7 @@ services:
   mysql:
     image: mysql:5.7.16
     container_name: cinra_mysql
+    working_dir: /var/sql
     ports:
       - 3306:3306
     environment:
@@ -28,3 +29,6 @@ services:
       MYSQL_DATABASE: cinra
       MYSQL_USER: cinra
       MYSQL_PASSWORD: 3030
+volumes:
+  db-data:
+    driver: local
